@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "harbor.core" . }}
+  annotations:
+    secret.reloader.stakater.com/reload: "harbor-database-credentials"
   labels:
 {{ include "harbor.labels" . | indent 4 }}
     component: core
