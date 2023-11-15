@@ -124,6 +124,11 @@ spec:
               secretKeyRef:
                 name: {{ .Values.database.external.existingSecret }}
                 key: password
+          - name: POSTGRESQL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.external.existingSecret }}
+                key: username
           {{- end }}
           {{- if .Values.registry.credentials.existingSecret }}
           - name: REGISTRY_CREDENTIAL_PASSWORD

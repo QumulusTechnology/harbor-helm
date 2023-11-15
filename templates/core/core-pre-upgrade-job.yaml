@@ -47,7 +47,13 @@ spec:
               secretKeyRef:
                 name: {{ .Values.database.external.existingSecret }}
                 key: password
-        {{- end }}               
+                env:
+          - name: POSTGRESQL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.external.existingSecret }}
+                key: username
+        {{- end }}
         volumeMounts:
         - name: config
           mountPath: /etc/core/app.conf
